@@ -1,0 +1,119 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int graph[100][100],color_bfs[100],cost[100],color_dfs[100];
+int path[100];
+
+struct node
+{
+    int u,w;
+};
+
+/*
+void BFS_code(int n,int s,int d)
+{
+    cout << endl<<endl;
+    cout <<"BFS -> "<<endl;
+    for(int i=1;i<=100;i++) path[i] = -1;
+    queue<node>Q;
+    Q.push({s,0});
+    color_bfs[s]=1;
+    cost[s]=0;
+    while(Q.size()!=0)
+    {
+        int u=Q.front().u, w = Q.front().w;
+        Q.pop();
+        for(int i=1;i<=n;i++)
+        {
+            if(graph[u][i]==1 && color_bfs[i]==0)
+            {
+                Q.push({i,w+1});
+                color_bfs[i] = 1;
+                cost[i] = w+1;
+                path[i] = u;
+            }
+        }
+    }
+    cout << "distance : " << cost[d] << endl;
+    int ans[100],count =0;
+    for(int j = d;j!=-1;j=path[j])
+    {
+        ans[count++] = j;
+    }
+    cout << "path : ";
+    for(int i=count-1;i>=0;i--)
+    {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+}
+
+ */
+
+void DFS_code(int n,int s,int d){
+    cout << endl<<endl;
+    cout << "DFS -> " << endl;
+    for(int i=1;i<=100;i++) path[i] = -1;
+    stack<node>S;
+    S.push({s,0});
+    color_dfs[s]=1;
+    cost[s]=0;
+    while(S.size()!=0)
+    {
+        int u=S.top().u, w = S.top().w;
+        S.pop();
+        for(int i=1;i<=n;i++)
+        {
+            if(graph[u][i]==1 && color_dfs[i]==0)
+            {
+                S.push({i,w+1});
+                color_dfs[i] = 1;
+                cost[i] = w+1;
+                path[i] = u;
+            }
+        }
+    }
+    cout << "distance : " << cost[d] << endl;
+    int ans[100],count=0;
+    for(int j = d;j!=-1;j=path[j])
+    {
+        ans[count++] = j;
+    }
+    cout << "path : ";
+    for(int i=count-1;i>=0;i--)
+    {
+        cout << ans[i] << " ";
+    }
+    cout<<endl;
+}
+
+
+int main()
+{
+int n, e;
+cin >> n >> e;
+for(int i=1; i<=e; i++)
+ {
+    int u, v;
+    cin >> u >> v;
+    graph[u][v] = graph[v][u] = 1;
+ }
+int s, d;
+cin >> s >> d;
+//    BFS_code(n,s,d);
+    DFS_code(n,s,d);
+}
+
+/*
+6 6
+
+1 5
+1 3
+5 2
+5 4
+2 6
+2 4
+
+1 2
+
+     */
