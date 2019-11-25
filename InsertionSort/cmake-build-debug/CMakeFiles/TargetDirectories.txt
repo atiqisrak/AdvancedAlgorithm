@@ -1,0 +1,3 @@
+H:/AlgorithmProjects/InsertionSort/cmake-build-debug/CMakeFiles/InsertionSort.dir
+H:/AlgorithmProjects/InsertionSort/cmake-build-debug/CMakeFiles/edit_cache.dir
+H:/AlgorithmProjects/InsertionSort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
